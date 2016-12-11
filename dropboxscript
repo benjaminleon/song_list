@@ -23,6 +23,7 @@ if [ -e songList2.txt ]; then
     fi
 else
     echo No list of previously uploaded songs exists
+    echo "" > songList2.txt
 fi
 
 curl -X POST https://content.dropboxapi.com/2/files/upload \
