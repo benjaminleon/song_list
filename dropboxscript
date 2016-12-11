@@ -1,0 +1,50 @@
+#!/bin/bash
+
+ROOT='PATH_TO_REPOSITORY/'
+
+# Create the list of nice songs
+echo Creating a new list of songs
+cd MUSIC_FOLDER  # Listing from the music folder gives only the filenames and not the full paths
+ls *.mp3 > $ROOT/songList.txt
+
+cd $ROOT
+
+if [ -e songList2.txt ]; then
+    
+    echo List of previously uploaded songs exist
+    
+    if diff songList.txt songList2.txt >/dev/null ; then
+	echo No new songs since last time this script was executed
+	echo "No need to upload song list at $(date)" >> dbscriptlog.txt
+	exit 0
+	
+    else
+	echo Some music file has been changed! Upload a new list!
+    fi
+else
+    echo No list of previously uploaded songs exists
+fi
+
+curl -X POST https://content.dropboxapi.com/2/files/upload \
+     --header 'Authorization: Bearer AUTHORIZATION_TOKEN' \
+     --header 'Content-Type: application/octet-stream' \
+     --header 'Dropbox-API-Arg: {"path": "/musicList.txt","mode":{".tag":"overwrite"}}' \
+     --data-binary @'/home/ben/Documents/songList.txt' \
+
+# Format the diff output
+echo "Uploaded a new song list on $(date). Changes involve: $(diff songList.txt songList2.txt | tail -n +2 | sed 's/..//' | tr -s '\n' ',' | sed 's/.$//' | sed 's/,/, /g')" >> dbscriptlog.txt  
+
+# Update the list with uploaded songs
+echo Creating a list of uploaded songs    
+cat songList.txt > songList2.txt
+
+# Experimenting with adding more code to this script so that github will tag the project
+# with "shell" instead of "python". The project itself is actually in shell, and the installation
+# is in python. 
+echo echo echo echo
+echo echo echo echo
+echo echo echo echo
+echo echo echo echo
+echo echo echo echo
+echo echo echo echo
+
