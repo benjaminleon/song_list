@@ -1,4 +1,4 @@
-# song_list
+## song_list
 
 Have you ever had a song locally on your computer and wanted to recommend it, but couldn't produce its name?
 
@@ -7,7 +7,7 @@ This bash script lists all your songs in a specified folder and uploads that lis
 An interesting find was that even though my dropbox is full (I'm using >30 Gb out of 5 Gb), I was able to upload through their CURL api. However, that seems to be "fixed" by now. It is possible that they have a bug which allows users to upload once via the CURL api even though their storage exceeds the maximum limit.
 
 
-# Setting things up
+## Setting things up
 
 To set up the script for your own computer, head over to https://www.dropbox.com/developers/apps to create your own app. Just make a minimal entry to be able to create a key to authorize uploading via their CURL api.
 
