@@ -4,17 +4,18 @@
 import os
 cwd = os.getcwd()  # Current Working Directory
 
-print "Make sure your authentication token and nothing else is in the text file  authorization_token.txt. If it is not, cancel now by pressing ctrl + d."
+print("Make sure your authentication token and nothing else is in the text file authorization_token.txt.\n"
+"If it is not, cancel now by pressing ctrl + d.")
 
-print "Please enter the full path to the music folder, without a '/'  at the end."
+print("Please enter the full path to the music folder, without a '/'  at the end.")
 music_folder = raw_input('> ')
 
 with open("authorization_token.txt", 'r') as token_file:
     authorization_token = token_file.read()
 
-print "Setting the music folder to", music_folder
-print "Setting the authorization token to", authorization_token
-print "Setting the path to the project folder as", cwd
+print("Setting the music folder to", music_folder)
+print("Setting the authorization token to", authorization_token)
+print("Setting the path to the project folder as", cwd)
 
 filename = "dropboxscript"
 with open(filename, 'r') as myfile:
@@ -22,7 +23,7 @@ with open(filename, 'r') as myfile:
 
 new_text = text.replace("PATH_TO_REPOSITORY", cwd)
 new_text = new_text.replace("MUSIC_FOLDER", music_folder)
-new_text = new_text.replace("AUTHORIZATION_TOKEN", "FfH7p3Pu-IEAAAAAAABJ-V8wec9YjZO1oIWdd7M0CZWQ4hbK18ALlvGaowcZOK99")
+new_text = new_text.replace("AUTHORIZATION_TOKEN", authorization_token)
 
 with open(filename, 'w') as myfile:
     myfile.write(new_text)

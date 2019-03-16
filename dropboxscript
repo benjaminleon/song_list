@@ -30,7 +30,7 @@ curl -X POST https://content.dropboxapi.com/2/files/upload \
      --header 'Authorization: Bearer AUTHORIZATION_TOKEN' \
      --header 'Content-Type: application/octet-stream' \
      --header 'Dropbox-API-Arg: {"path": "/musicList.txt","mode":{".tag":"overwrite"}}' \
-     --data-binary @'/home/ben/Documents/songList.txt' \
+     --data-binary @'PATH_TO_REPOSITORY/songList.txt' \
 
 # Format the diff output
 echo "Uploaded a new song list on $(date). Changes involve: $(diff songList.txt songList2.txt | tail -n +2 | sed 's/..//' | tr -s '\n' ',' | sed 's/.$//' | sed 's/,/, /g')" >> dbscriptlog.txt  
