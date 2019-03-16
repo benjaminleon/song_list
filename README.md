@@ -13,7 +13,7 @@ To set up the script for your own computer, head over to https://www.dropbox.com
 
 Go to https://dropbox.github.io/dropbox-api-v2-explorer/#files_upload and press "Get Token". Copy that Access Token and put it in the text file "authorization_token.txt".
 
-Type `python installation` from the project folder, to let a python script set up the paths and enter your token at the right place in the bash script for you.
+Type `python installation.py` from the project folder, to let a python script set up the paths and enter your token at the right place in the bash script for you.
 
 ## Scheduling a cronjob
 A cronjob can execute scripts at regular intervals and is perfect for a script like this which produces backups.
